@@ -17,3 +17,4 @@ stage 'APPLY'
    sh ''' #!/bin/bash
                  terraform apply "s3.tfplan"
          '''
+}
