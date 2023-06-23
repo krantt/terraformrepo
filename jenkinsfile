@@ -1,0 +1,19 @@
+node{
+stage 'Checkout Terraform project'
+    git 'https://github.com/krantt/terraformrepo.git'
+stage 'INIT'
+   sh ''' #!/bin/bash
+                 terraform init
+         '''
+stage 'SANITY Check'
+   sh ''' #!/bin/bash
+                 terraform validate
+         '''
+stage 'PLAN'
+   sh ''' #!/bin/bash
+                 terraform plan -out "s3.tfplan"
+         '''
+stage 'APPLY'
+   sh ''' #!/bin/bash
+                 terraform apply "s3.tfplan"
+         '''
